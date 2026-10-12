@@ -1,0 +1,33 @@
+.card {
+  cursor: pointer;
+  transition: ease 0.2s;
+  transition-property: background-color, border-color;
+  user-select: none;
+
+  &:hover {
+    background-color: #f0f4ff;
+    border-color: #b3c7ff;
+  }
+
+  &:active {
+    background-color: #e0e8ff;
+    border-color: #3b66ff;
+  }
+}
+
+.name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.paragraph {
+  margin: 0;
+}
+
+.title {
+  font-size: 0.875rem;
+  font-weight: 700;
+  display: inline-block;
+  margin: 0;
+}

@@ -1,93 +1,78 @@
-# fullstack-list
+# Fullstack Pairing Exercise
 
+Welcome! Think of this less as an interview and more as your first pairing session with your new teammates.
 
+You will be **driving** and the interviewers will be **navigating**. They are there to help you and will interact with you throughout. There are no "right answers" and finishing the exercise is not a goal, so don't stress and take your time. Work as you would on a normal day: search the web for what you don't know, ask questions, iterate on ideas and code.
 
-## Getting started
+You'll be working on a small, pre-existing app designed only for this exercise. The frontend uses **React with TypeScript**. The backend is your choice of **Node.js, Python, Ruby or Kotlin**. We do not evaluate you on any specific framework: we will help with syntax and APIs. We evaluate you as an engineer.
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+## Please come prepared to
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+- Clone this repository (or download it as a zip)
+- Install dependencies (`npm install`, `pip install`, `bundle install` or `./gradlew`)
+- Code in your favourite editor or IDE
+- Open the app in a browser (preferably Chrome)
+- Share your screen
 
-## Add your files
+## Technical areas we'll cover
 
-* [Create](https://docs.gitlab.com/user/project/repository/web_editor/#create-a-file) or [upload](https://docs.gitlab.com/user/project/repository/web_editor/#upload-a-file) files
-* [Add files using the command line](https://docs.gitlab.com/topics/git/add_files/#add-files-to-a-git-repository) or push an existing Git repository with the following command:
+- Web development (HTML, CSS, JS)
+- REST API design
+- Data filtering and state management
+- Problem decomposition and trade-off discussion
+
+## Structure
 
 ```
-cd existing_repo
-git remote add origin https://gitlab.eu-west-1.mgmt.onfido.xyz/onfido/signals-acquisition/fullstack-list.git
-git branch -M master
-git push -uf origin master
+fullstack-list/
+├── web/                        React 19 + Vite + TypeScript frontend
+├── backends/
+│   ├── node-express/           TypeScript + Express
+│   ├── python-fastapi/         Python 3.10+ + FastAPI
+│   ├── ruby-sinatra/           Ruby 2.7+ + Sinatra
+│   └── kotlin-spring/          Kotlin + Spring Boot 3 (JDK 17+)
+├── data/
+│   ├── people.json             Shared dataset (87 Star Wars characters)
+│   └── schema.sql              Reference schema for DB discussion
+└── README.md
 ```
 
-## Integrate with your tools
+## Setup
 
-* [Set up project integrations](https://gitlab.eu-west-1.mgmt.onfido.xyz/onfido/signals-acquisition/fullstack-list/-/settings/integrations)
+### 1. Start a backend (use the language you are most comfortable with)
 
-## Collaborate with your team
+| Language | Command | Port |
+|----------|---------|------|
+| **Node.js** (18+) | `cd backends/node-express && npm install && npm start` | 3001 |
+| **Python** (3.10+) | `cd backends/python-fastapi && pip install -r requirements.txt && uvicorn main:app --reload --port 3001` | 3001 |
+| **Ruby** (2.7+) | `cd backends/ruby-sinatra && bundle install && ruby app.rb` | 3001 |
+| **Kotlin** (JDK 17+) | `cd backends/kotlin-spring && ./gradlew bootRun` | 3001 |
 
-* [Invite team members and collaborators](https://docs.gitlab.com/user/project/members/)
-* [Create a new merge request](https://docs.gitlab.com/user/project/merge_requests/creating_merge_requests/)
-* [Automatically close issues from merge requests](https://docs.gitlab.com/user/project/issues/managing_issues/#closing-issues-automatically)
-* [Enable merge request approvals](https://docs.gitlab.com/user/project/merge_requests/approvals/)
-* [Set auto-merge](https://docs.gitlab.com/user/project/merge_requests/auto_merge/)
+### 2. Start the frontend
 
-## Test and Deploy
+```bash
+cd web && npm install && npm start
+```
 
-Use the built-in continuous integration in GitLab.
+The frontend is available at http://localhost:5173. It shows a list of people, clicking an item shows its details and the back button returns to the list. It currently reads from a local mock (`web/src/core/usePeople.ts`) that mirrors the backend response. `/api/*` is already proxied to the backend on port 3001.
 
-* [Get started with GitLab CI/CD](https://docs.gitlab.com/ci/quick_start/)
-* [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/user/application_security/sast/)
-* [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/topics/autodevops/requirements/)
-* [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/user/clusters/agent/)
-* [Set up protected environments](https://docs.gitlab.com/ci/environments/protected_environments/)
+## API Contract
 
-***
+```
+GET /people?page=<n>&limit=<n>
+→ { "data": [...], "meta": { "total": N, "page": N, "limit": N } }
 
-# Editing this README
+GET /people/:id
+→ Person object | 404
+```
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
+## Troubleshooting
 
-## Suggestions for a good README
-
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
-
-## Name
-Choose a self-explaining name for your project.
-
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
-
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
-
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
-
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+| Problem | Fix |
+|---------|-----|
+| Port 3001 or 5173 already in use | `lsof -i :<port>`, then `kill <PID>` (usually a stale process) |
+| `npm install` fails | Check `node -v` (18+ needed), then `rm -rf node_modules && npm install` |
+| Python `ModuleNotFoundError` | `pip install -r requirements.txt` (you may need `pip3`) |
+| Kotlin build fails | Needs JDK 17+, check `java -version` |
+| Ruby `bundle install` fails | you may need `gem install bundler` first |
+| Can't clone | Ask for a zip file |

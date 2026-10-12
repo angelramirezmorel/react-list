@@ -1,0 +1,23 @@
+{
+  "name": "fullstack-list-backend-node",
+  "version": "1.0.0",
+  "description": "Node.js (TypeScript + Express) backend preset",
+  "scripts": {
+    "start": "nodemon --exec npx ts-node src/index.ts",
+    "build": "tsc",
+    "test": "echo \"Add tests here\" && exit 0"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "express": "^4.21.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.7.0",
+    "nodemon": "^3.1.7",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.2"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "include": ["**/*"],
+  "exclude": ["node_modules"],
+
+  "compilerOptions": {
+    "outDir": "dist",
+
+    "allowJs": false,
+    "allowSyntheticDefaultImports": true,
+    "alwaysStrict": true,
+    "declaration": false,
+    "esModuleInterop": false,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "noImplicitAny": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "strictNullChecks": true,
+    "strict": true,
+    "useDefineForClassFields": true,
+
+    "jsx": "react-jsx",
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "target": "es2019",
+    "lib": ["esnext", "dom", "dom.iterable"]
+  }
+}

@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.vite/
+*.pyc
+__pycache__/
+.gradle/
+build/
+.idea/
+.DS_Store
+*.class
+vendor/bundle/

@@ -1,0 +1,14 @@
+.details {
+  display: grid;
+  gap: 1rem;
+}
+
+.back {
+  background: none;
+  border: 0;
+  color: #3b66ff;
+  cursor: pointer;
+  font: inherit;
+  justify-self: start;
+  padding: 0.5rem 0;
+}

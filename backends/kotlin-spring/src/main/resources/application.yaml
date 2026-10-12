@@ -1,0 +1,5 @@
+server:
+  port: 3001
+
+people:
+  data-path: ${PEOPLE_DATA_PATH:../../data/people.json}

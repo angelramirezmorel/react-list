@@ -1,0 +1,8 @@
+[project]
+name = "fullstack-list-backend-python"
+version = "1.0.0"
+requires-python = ">=3.10"
+dependencies = ["fastapi>=0.111", "uvicorn[standard]>=0.30"]
+
+[project.scripts]
+dev = "uvicorn main:app --reload --port 3001"

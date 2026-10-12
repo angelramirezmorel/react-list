@@ -1,0 +1,19 @@
+.main {
+  height: 100%;
+  overflow: hidden auto;
+  padding: 1rem;
+}
+
+.list {
+  display: grid;
+  gap: 1rem;
+  grid: auto-flow / 1fr;
+
+  @media (min-width: 620px) {
+    grid: auto-flow / repeat(2, 1fr);
+  }
+
+  @media (min-width: 940px) {
+    grid: auto-flow / repeat(3, 1fr);
+  }
+}
